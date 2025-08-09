@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+    --font-roboto: "Roboto", sans-serif;
+    --font-jost: "Jost", sans-serif;
+    --font-open-sans: "Open Sans", sans-serif;
+    --color-custom-grey: #6B6A75;
+    --color-custom-blue: #2878EB;
+    --color-custom-blue-dark: #120F2D;
+    --color-custom-white: #ECF4FF;
+    --color-custom-grey2: #495057;
+    --color-custom-grey3: #ced4da;
+    --color-custom-vermi: #F14D5D;
+    --color-custom-vermi-dark: #D14D5D;
+    --color-custom-green: #28A745;
+    --color-custom-yellow: #ffc107;
+}
+
+@layer utilities {
+    .bg-header-gradient {
+        background: linear-gradient(rgba(40, 120, 235, 0.9), rgba(40, 120, 235, 0.9)), url('./images/header-bg.jpg') no-repeat center center;
+        background-size: cover;
+    }
+
+    .bg-header-gradient-2 {
+        background: linear-gradient(rgba(40, 120, 235, 0.9), rgba(40, 120, 235, 0.9)), url('./images/bg-header-about.jpg') no-repeat center center;
+        background-size: cover;
+    }
+
+    .h-calc-custom {
+        height: calc(1.5em + 0.75rem + 2px);
+    }
+
+    .bg-fixed-img {
+        background: linear-gradient(rgba(40, 120, 235, 0.05), rgba(40, 120, 235, 0.05)), url('./images/bf-fixed-img.jpg');
+        background-attachment: fixed;
+    }
+}

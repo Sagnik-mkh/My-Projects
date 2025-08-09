@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Career School</title>
+    <meta name="description" content="Career oaching Website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/97344126bb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./output.css">
+</head>
+
+<body class="font-open-sans bg-white text-base font-normal leading-[1.5] text-custom-grey text-left box-border m-0 p-0">
+    <!-- header -->
+    <header class="bg-custom-blue-dark mx-auto">
+        <section class="grid md:grid-flow-col container mx-auto py-2 md:px-12 text-custom-white justify-items-center">
+            <section class="md:justify-self-start sm:px-[15px] whitespace-nowrap mb-2 md:mb-0">
+                <small class="text-[65%] 2xs:text-[80%] font-normal">
+                    <i class="fa fa-phone-alt mr-2"></i>
+                    +911234567890
+                </small>
+                <small class="p-2 2xs:px-4">
+                    |
+                </small>
+                <small class="text-[65%] 2xs:text-[80%] font-normal">
+                    <i class="fa fa-envelope mr-2"></i>
+                    info@example.com
+                </small>
+            </section>
+            <section class="md:justify-self-end px-1.5 2xs:px-[15px] whitespace-nowrap">
+                <a href="./index.html">
+                    <i class="fab fa-facebook-f p-2 2xs:pr-4 hover:-translate-y-1 duration-500"></i>
+                </a>
+                <a href="./index.html">
+                    <i class="fab fa-twitter p-2 2xs:pr-4 hover:-translate-y-1 duration-500"></i>
+                </a>
+                <a href="./index.html">
+                    <i class="fab fa-linkedin-in p-2 2xs:pr-4 hover:-translate-y-1 duration-500"></i>
+                </a>
+                <a href="./index.html">
+                    <i class="fab fa-instagram p-2 2xs:pr-4 hover:-translate-y-1 duration-500"></i>
+                </a>
+                <a href="./index.html">
+                    <i class="fab fa-youtube hover:-translate-y-1 duration-500"></i>
+                </a>
+            </section>
+        </section>
+    </header>
+
+    <!-- nav-bar -->
+    <div class="mx-auto w-full lg:px-12">
+        <nav class="grid grid-flow-col items-center p-4 lg:p-0">
+            <a href="./index.html" class="justify-self-start lg:justify-self-start flex items-center">
+                <div class="text-3xl font-jost font-bold text-custom-blue">
+                    <i class="fa fa-book-reader mr-4"></i>
+                </div>
+                <h1 class="text-xl md:text-2xl lg:text-3xl uppercase font-jost font-bold text-custom-blue">
+                    The Career School
+                </h1>
+            </a>
+            <div class="lg:block hidden justify-self-center whitespace-nowrap py-[30px]">
+                <div class="flex">
+                    <a href="./index.html"
+                        class="text-custom-blue-dark font-jost px-[15px] text-[18px] font-medium hover:text-custom-blue block hover:scale-110 transition-all duration-300 ease-in-out no-underline">
+                        Home
+                    </a>
+                    <a href="./about.html"
+                        class="text-custom-blue-dark font-jost px-[15px] text-[18px] font-medium hover:text-custom-blue block hover:scale-110 transition-all duration-300 ease-in-out no-underline">
+                        About
+                    </a>
+                    <a href="./index.html"
+                        class="text-custom-blue-dark font-jost px-[15px] text-[18px] font-medium hover:text-custom-blue block hover:scale-110 transition-all duration-300 ease-in-out no-underline">
+                        Courses
+                    </a>
+                    <a href="./index.html"
+                        class="text-custom-blue-dark font-jost px-[15px] text-[18px] font-medium hover:text-custom-blue block hover:scale-110 transition-all duration-300 ease-in-out no-underline">
+                        Pages
+                    </a>
+                    <a href="./index.html"
+                        class="text-custom-blue-dark font-jost px-[15px] text-[18px] font-medium hover:text-custom-blue block hover:scale-110 transition-all duration-300 ease-in-out no-underline">
+                        Contacts
+                    </a>
+                </div>
+            </div>
+            <a href="./index.html"
+                class="lg:block hidden justify-self-end lg:justify-self-center font-jost font-medium text-base text-white bg-custom-blue px-6 py-2 whitespace-nowrap hover:scale-110 hover:bg-custom-blue-dark duration-300">
+                Join Us
+            </a>
+            <button id="sm-menu-icon" type="button" onclick="openNavBar()"
+                class="lg:hidden justify-self-end text-3xl font-jost font-bold">
+                <i id="drop-down-icon" class="fa-bars fa-solid"></i>
+            </button>
+        </nav>
+        <div id="drop-down-bars"
+            class="lg:hidden shadow-2xl transition-all duration-300 ease-in absolute overflow-hidden max-h-0 opacity-0 bg-white w-full rounded-b-2xl">
+            <div class="flex justify-end">
+                <ul class="list-none">
+                    <li class="mb-2 p-2 cursor-pointer hover:text-custom-blue duration-200">
+                        <a href="./index.html" class="font-medium">
+                            Home
+                        </a>
+                    </li>
+                    <li class="mb-2 p-2 cursor-pointer hover:text-custom-blue duration-200">
+                        <a href="./about.html" class="font-medium">
+                            About
+                        </a>
+                    </li>
+                    <li class="mb-2 p-2 cursor-pointer hover:text-custom-blue duration-200">
+                        <a href="./index.html" class="font-medium">
+                            Courses
+                        </a>
+                    </li>
+                    <li class="mb-2 p-2 cursor-pointer hover:text-custom-blue duration-200">
+                        <a href="./index.html" class="font-medium">
+                            Pages
+                        </a>
+                    </li>
+                    <li class="mb-2 p-2 cursor-pointer hover:text-custom-blue duration-200">
+                        <a href="./index.html" class="font-medium">
+                            Contacts
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main section 1 -->
+    <div class="bg-header-gradient-2 text-white lg:py-8 lg:px-8 py-8">
+        <div class="py-12 px-[15px] container mx-auto my-6 grid grid-flow-row">
+            <h1 class="text-5xl lg:text-8xl font-bold font-jost text-center my-6">
+                About
+            </h1>
+            <h1 class="text-sm font-jost text-center mb-12">
+                HOME&nbsp;&nbsp;&nbsp;&gt;&gt;&nbsp;&nbsp;&nbsp;ABOUT
+            </h1>
+            <div class="sm:max-w-1/2 w-full m-auto grid grid-cols-[1fr_2fr_1fr] mb-12">
+                <button type="button"
+                    class="text-sm md:text-base w-full bg-white text-custom-grey font-medium py-1.5 border-r-2 md:border-r-4 border-r-custom-white cursor-pointer">
+                    Courses
+                </button>
+                <input type="text" placeholder="Keywords"
+                    class="text-sm md:text-base w-full py-[20px] px-2 sm:px-[25px] bg-white text-gray-500">
+                <button type="submit"
+                    class="text-sm md:text-base w-full hover:bg-custom-vermi-dark duration-200 bg-custom-vermi font-medium py-1.5">
+                    Search
+                </button>
+            </div>
+        </div>
+    </div>
+    <img src="./images/torn-page-img.png" alt="page-end"
+        class="bg-contain object-cover relative top-[-84px] w-full h-[85px] left-0 z-10">
+
+    <!-- About -->
+    <div class="py-12 px-[15px]">
+        <div class="py-12 lg:px-[15px] container mx-auto">
+            <div class="grid grid-flow-row lg:grid-flow-col">
+                <div class="px-[15px] mb-12 lg:mb-0 max-h-[500px] lg:max-h-full">
+                    <img src="./images/About-img-1.jpg" alt="About-img" class="w-full h-full object-cover">
+                </div>
+                <div class="px-[15px] grid grid-flow-row">
+                    <h6
+                        class="text-custom-vermi justify-self-center lg:justify-self-start uppercase pb-2 w-fit font-medium text-base mb-2 font-jost leading-[1.2] underline underline-offset-12 decoration-2 decoration-dashed">
+                        About Us
+                    </h6>
+                    <h1
+                        class="text-[3.5rem] leading-[1.2] w-fit text-center lg:text-left font-bold mb-6 font-jost text-custom-blue-dark">
+                        First Choice For Online Education Anywhere</h1>
+                    <p class="mb-4 w-fit lg:text-left text-center">Tempor erat elitr at rebum at at clita aliquyam
+                        consetetur. Diam dolor diam
+                        ipsum et, tempor voluptua sit consetetur sit. Aliquyam diam amet diam et eos sadipscing labore.
+                        Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et
+                        tempor consetetur takimata eirmod, dolores takimata consetetur invidunt magna dolores aliquyam
+                        dolores dolore. Amet erat amet et magna</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 mt-4 items-center">
+                        <div class="md:p-6 text-center bg-custom-green text-white">
+                            <h1 class="text-[2.5rem] font-jost font-bold mb-2 leading-[1.2]">
+                                123
+                            </h1>
+                            <h6 class="text-base font-jost font-medium leading-[1.2] uppercase mb-2">
+                                Available
+                                <span class="block leading-[1.2]">Subjects</span>
+                            </h6>
+                        </div>
+                        <div class="md:p-6 text-center bg-custom-blue text-white">
+                            <h1 class="text-[2.5rem] font-jost font-bold mb-2 leading-[1.2]">
+                                123
+                            </h1>
+                            <h6 class="text-base font-jost font-medium uppercase mb-2 leading-[1.2]">
+                                Available
+                                <span class="block leading-[1.2]">Subjects</span>
+                            </h6>
+                        </div>
+                        <div class="md:p-6 text-center bg-custom-vermi text-white">
+                            <h1 class="leading-[1.2] font-jost text-[2.5rem] font-bold mb-2">
+                                123
+                            </h1>
+                            <h6 class="text-base font-jost leading-[1.2] font-medium uppercase mb-2">
+                                Available
+                                <span class="block leading-[1.2]">Subjects</span>
+                            </h6>
+                        </div>
+                        <div class="md:p-6 leading-[1.2] text-center bg-custom-yellow text-white">
+                            <h1 class="text-[2.5rem] leading-[1.2] font-jost font-bold mb-2">
+                                123
+                            </h1>
+                            <h6 class="text-base font-jost leading-[1.2] font-medium uppercase mb-2">
+                                Available
+                                <span class="block leading-[1.2]">Subjects</span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- feature start -->
+    <div class="bg-fixed-img my-[90px] px-[15px]">
+        <div class="grid md:grid-flow-col container mx-auto">
+            <div class="py-12 my-12 px-[15px] mb-2">
+                <div class="mb-6">
+                    <h6
+                        class="text-custom-vermi justify-self-center lg:justify-self-start uppercase pb-2 w-fit font-medium text-base mb-2 font-jost leading-[1.2] underline underline-offset-12 decoration-2 decoration-dashed">
+                        Why Choose Us?</h6>
+                    <h1
+                        class="text-[3.5rem] leading-[1.2] w-fit text-center lg:text-left font-bold mb-6 font-jost text-custom-blue-dark">
+                        Why You Should Start Learning with Us?</h1>
+                </div>
+                <p class="mb-4 pb-2">Aliquyam accusam clita nonumy ipsum sit sea clita ipsum clita, ipsum
+                    dolores
+                    amet voluptua duo dolores et sit ipsum
+                    rebum, sadipscing et erat eirmod diam kasd labore clita est. Diam sanctus gubergren sit rebum
+                    clita amet.
+                </p>
+                <div class="grid grid-flow-col mb-6">
+                    <div
+                        class="w-[77px] h-[77px] bg-custom-blue text-white flex justify-center items-center place-self-center">
+                        <i class="fa fa-2x fa-graduation-cap"></i>
+                    </div>
+                    <div class="ml-6">
+                        <h4
+                            class="text-2xl leading-[1.2] w-fit text-center lg:text-left font-semibold mb-2 font-jost text-custom-blue-dark">
+                            Skilled Instructors</h4>
+                        <p>Labore rebum duo est Sit dolore eos sit tempor eos stet, vero vero
+                            clita magna kasd no
+                            nonumy et eos dolor magna ipsum.</p>
+                    </div>
+                </div>
+                <div class="grid grid-flow-col mb-6">
+                    <div
+                        class="w-[77px] h-[77px] bg-custom-vermi text-white flex justify-center items-center place-self-center">
+                        <i class="fa fa-2x fa-certificate"></i>
+                    </div>
+                    <div class="ml-6">
+                        <h4
+                            class="text-2xl leading-[1.2] w-fit text-center lg:text-left font-semibold mb-2 font-jost text-custom-blue-dark">
+                            Certificate</h4>
+                        <p>Labore rebum duo est Sit dolore eos sit tempor eos stet, vero vero
+                            clita magna kasd no
+                            nonumy et eos dolor magna ipsum.</p>
+                    </div>
+                </div>
+                <div class="grid grid-flow-col mb-6">
+                    <div
+                        class="w-[77px] h-[77px] bg-custom-yellow text-white flex justify-center items-center place-self-cente">
+                        <i class="fa fa-2x fa-book-reader"></i>
+                    </div>
+                    <div class="ml-6">
+                        <h4
+                            class="text-2xl leading-[1.2] w-fit text-center lg:text-left font-semibold mb-2 font-jost text-custom-blue-dark">
+                            Online Classes</h4>
+                        <p>Labore rebum duo est Sit dolore eos sit tempor eos stet, vero vero
+                            clita magna kasd no
+                            nonumy et eos dolor magna ipsum.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="px-[15px]">
+                <img src="./images/featured-img.jpg" alt="featured-img" class="object-cover w-full h-full">
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="mt-[90px] text-white pt-12 bg-custom-blue-dark px-[15px]">
+        <div class="pt-12 mt-12 container px-[15px] mx-auto max-w-[1140px]">
+            <div class="md:grid md:grid-flow-col">
+                <div class="mb-12 px-[15px]">
+                    <a href="./index.html" class="py-1.5 mr-4 text-xl whitespace-nowrap no-underline bg-transparent">
+                        <h1 class="mb-2 uppercase font-bold text-xl md:text-2xl font-jost leading-[1.2]">
+                            <i class="fa fa-book-reader mr-[1rem]"></i>
+                            The Career School
+                        </h1>
+                    </a>
+                    <p class="m-0 text-gray-400">
+                        Accusam nonumy clita sed rebum kasd eirmod elitr. Ipsum ea lorem at et diam est, tempor
+                        rebum ipsum sit ea tempor stet et consetetur dolores. Justo stet diam ipsum lorem vero clita
+                        diam
+                    </p>
+                </div>
+                <div class="mb-12 px-[15px]">
+                    <h3 class="mb-6 whitespace-nowrap font-semibold text-xl md:text-2xl font-jost leading-[1.2]">
+                        Newsletter
+                    </h3>
+                    <div class="flex">
+                        <input class="px-2 py-5 md:p-5 max-w-1/2 bg-white text-gray-400" type="text"
+                            placeholder="E-mail">
+                        <button type="button"
+                            class="cursor-pointer font-jost px-6 py-2 text-white bg-custom-blue text-center  font-medium no-underline leading-[1.5]">
+                            Sign
+                            up
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="md:grid md:grid-flow-col">
+                <div class="mb-12 px-[15px]">
+                    <h3 class="mb-6 font-semibold text-xl md:text-2xl font-jost leading-[1.2]">
+                        Get In Touch
+                    </h3>
+                    <p class="mb-4 text-gray-400 text-sm md:text-base">
+                        <i class="fa fa-map-marker-alt mb-2 text-gray-400 mr-2"></i>
+                        Address, Address, Address
+                    </p>
+                    <p class="mb-4 text-gray-400 text-sm md:text-base">
+                        <i class="fa fa-phone-alt mb-2 text-gray-400 mr-2"></i>
+                        +911234567890
+                    </p>
+                    <p class="mb-4 text-gray-400 text-sm md:text-base">
+                        <i class="fa fa-envelope mb-2 text-gray-400 mr-2"></i>
+                        info@example.com
+                    </p>
+                    <div class="text-left mt-6">
+                        <a href="" class="mr-6 no-underline bg-transparent text-sm md:text-base">
+                            <i class="hover:-translate-y-2 duration-500 fab fa-2x fa-facebook-f"></i>
+                        </a>
+                        <a href="" class="mr-6 no-underline bg-transparent text-sm md:text-base">
+                            <i class="hover:-translate-y-2 duration-500 fab fa-2x fa-twitter"></i>
+                        </a>
+                        <a href="" class="mr-6 no-underline bg-transparent text-sm md:text-base">
+                            <i class="hover:-translate-y-2 duration-500 fab fa-2x fa-linkedin-in"></i>
+                        </a>
+                        <a href="" class="mr-6 no-underline bg-transparent text-sm md:text-base">
+                            <i class="hover:-translate-y-2 duration-500 fab fa-2x fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="mb-12 px-[15px] text-white">
+                    <h3 class="mb-6 font-semibold text-xl md:text-2xl font-jost leading-[1.2]">
+                        Our Courses
+                    </h3>
+                    <p class="mb-4 text-gray-400 text-sm md:text-base">
+                        <i class="fa fa-angle-right mb-2 text-gray-400 mr-2"></i>
+                        Courses-1
+                    </p>
+                    <p class="mb-4 text-gray-400 text-sm md:text-base">
+                        <i class="fa fa-angle-right mb-2 text-gray-400 mr-2"></i>
+                        Courses-2
+                    </p>
+                    <p class="mb-4 text-gray-400 text-sm md:text-base">
+                        <i class="fa fa-angle-right mb-2 text-gray-400 mr-2"></i>
+                        Courses-3
+                    </p>
+                    <p class="mb-4 text-gray-400 text-sm md:text-base">
+                        <i class="fa fa-angle-right mb-2 text-gray-400 mr-2"></i>
+                        Courses-4
+                    </p>
+                </div>
+                <div class="pb-6 px-[15px]">
+                    <h3 class="mb-6 font-semibold text-xl md:text-2xl font-jost leading-[1.2]">
+                        Quick Links
+                    </h3>
+                    <a
+                        class="block cursor-pointer hover:text-white duration-200 hover:font-bold mb-4 text-gray-400 text-sm md:text-base">
+                        <i class="fa fa-angle-right mb-2 text-gray-400 mr-2"></i>
+                        Link-1
+                    </a>
+                    <a
+                        class="block cursor-pointer hover:text-white duration-200 hover:font-bold mb-4 text-gray-400 text-sm md:text-base">
+                        <i class="fa fa-angle-right mb-2 text-gray-400 mr-2"></i>
+                        Link-2
+                    </a>
+                    <a
+                        class="block cursor-pointer hover:text-white duration-200 hover:font-bold mb-4 text-gray-400 text-sm md:text-base">
+                        <i class="fa fa-angle-right mb-2 text-gray-400 mr-2"></i>
+                        Link-3
+                    </a>
+                    <a
+                        class="block cursor-pointer hover:text-white duration-200 hover:font-bold mb-4 text-gray-400 text-sm md:text-base">
+                        <i class="fa fa-angle-right mb-2 text-gray-400 mr-2"></i>
+                        Link-4
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./scrip.js"></script>
+</body>
+
+</html>
