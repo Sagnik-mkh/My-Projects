@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tire List Creator</title>
+    <meta name="description" content="Tier List Creator">
+    <!-- Style sheet -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="bg-neutral-800 font-popins h-[100vh]">
+    <!--
+        Header of the page    
+    -->
+    <div class="py-6 container mx-auto mb-6">
+        <div class="text-center text-3xl font-semibold">
+            <h1>Create Tier list</h1>
+        </div>
+    </div>
+
+    <!-- 
+        Search forms for the page
+    -->
+    <div class="flex flex-col gap-4 container mx-auto mb-12">
+        <!-- Adding new tier form -->
+        <form class="m-4 flex justify-center items-center" id="add-new-tier-form">
+            <label class="mx-4 text-center p-5 font-semibold badge badge-primary" for="tier">Tier Name</label>
+            <input type="text" name="tier" id="new-tier-name" placeholder="Enter tier name" class="input input-neutral">
+            <button class="mx-4 btn btn-primary" type="submit" id="tier-add-btn">Submit</button>
+        </form>
+
+        <!-- Adding new image to the list form -->
+        <form class="m-4 flex justify-center items-center" id="add-new-image-form">
+            <label class="mx-4 text-center p-5 font-semibold badge badge-primary" for="tier">Image link</label>
+            <input type="text" name="tier" id="new-img-url" placeholder="Enter image link" class="input input-neutral">
+            <button class="mx-4 btn btn-primary" type="submit" id="img-add-btn">Submit</button>
+        </form>
+    </div>
+
+    <!-- 
+        Tier and image lists which were added.
+    -->
+    <div class="container mx-auto">
+        <!-- Tier list -->
+        <section id="tier-lists-collection" class="grid grid-flow-row mb-6">
+        </section>
+
+        <!-- image list -->
+        <section id="img-lists" class="flex flex-wrap gap-1">
+        </section>
+    </div>
+
+    <!-- JS code -->
+    <script src="./script.js"></script>
+</body>
+
+</html>
