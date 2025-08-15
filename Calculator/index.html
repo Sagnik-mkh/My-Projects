@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/index.css">
+  <title>Calculator</title>
+</head>
+
+<body class="font-popins w-full h-[100vh] flex justify-center items-center bg-fwhite">
+  <div class="p-5 rounded-2xl bg-fdarkgray shadow-lg shadow-fdarkgray flex flex-col">
+    <!-- Input box for eval -->
+    <input data-inpt readonly type="text" placeholder="0"
+      class="outline-none w-xs border-none p-6 m-2.5 bg-transparent text-[40px] text-right cursor-pointer text-fwhite">
+    <!-- Buttons -->
+    <div data-all-btn class="flex flex-col">
+      <div class="flex items-center justify-around">
+        <button data-btn-type="del" data-click="inactive" data-clear-btn type="button" aria-label="input-numbers-btn"
+          class="hover:bg-fmediumgray w-[60px] h-[60px] m-2.5 rounded-xl bg-fdarkgray text-fdarkturquoise text-xl shadow-sm shadow-fdarktransperent cursor-pointer transition-all duration-200 ease-in-out">
+          AC
+        </button>
+        <button data-btn-type="del" data-click="inactive" data-del-btn type="button" aria-label="input-numbers-btn"
+          class="hover:bg-fmediumgray w-[60px] h-[60px] m-2.5 rounded-xl bg-fdarkgray text-fdarkturquoise text-xl shadow-sm shadow-fdarktransperent cursor-pointer transition-all duration-200 ease-in-out">
+          DEL
+        </button>
+        <button data-btn-type="op" data-click="inactive" data-op-btn type="button" aria-label="input-numbers-btn"
+          class="hover:bg-fmediumgray w-[60px] h-[60px] m-2.5 rounded-xl bg-fdarkgray text-fdarkturquoise text-xl shadow-sm shadow-fdarktransperent cursor-pointer transition-all duration-200 ease-in-out">
+          %
+        </button>
+        <button data-btn-type="op" data-click="inactive" data-op-btn type="button" aria-label="input-numbers-btn"
+          class="hover:bg-fmediumgray w-[60px] h-[60px] m-2.5 rounded-xl bg-fdarkgray text-fdarkturquoise text-xl shadow-sm shadow-fdarktransperent cursor-pointer transition-all duration-200 ease-in-out">
+          /
+        </button>
+      </div>
+      <div class="flex items-center justify-around">
+        <button data-btn-type="num" data-click="inactive" data-num-btn type="button" aria-label="input-numbers-btn"
+          class="hover:bg-fmediumgray w-[60px] h-[60px] m-2.5 rounded-xl bg-fdarkgray text-fwhite text-xl shadow-sm shadow-fdarktransperent cursor-pointer transition-all duration-200 ease-in-out">
+          7
+        </button>
+        <button data-btn-type="num" data-click="inactive" data-num-btn type="button" aria-label="input-numbers-btn"
+          class="hover:bg-fmediumgray w-[60px] h-[60px] m-2.5 rounded-xl bg-fdarkgray text-fwhite text-xl shadow-sm shadow-fdarktransperent cursor-pointer transition-all duration-200 ease-in-out">
+          8
+        </button>
+        <button data-btn-type="num" data-click="inactive" data-num-btn type="button" aria-label="input-numbers-btn"
+          class="hover:bg-fmediumgray w-[60px] h-[60px] m-2.5 rounded-xl bg-fdarkgray text-fwhite text-xl shadow-sm shadow-fdarktransperent cursor-pointer transition-all duration-200 ease-in-out">
+          9
+        </button>
+        <button data-btn-type="op" data-click="inactive" data-op-btn type="button" aria-label="input-numbers-btn"
+          class="hover:bg-fmediumgray w-[60px] h-[60px] m-2.5 rounded-xl bg-fdarkgray text-fdarkturquoise text-xl shadow-sm shadow-fdarktransperent cursor-pointer transition-all duration-200 ease-in-out">
+          *
+        </button>
+      </div>
+      <div class="flex items-center justify-around">
+        <button data-btn-type="num" data-click="inactive" data-num-btn type="button" aria-label="input-numbers-btn"
+          class="hover:bg-fmediumgray w-[60px] h-[60px] m-2.5 rounded-xl bg-fdarkgray text-fwhite text-xl shadow-sm shadow-fdarktransperent cursor-pointer transition-all duration-200 ease-in-out">
+          4
+        </button>
+        <button data-btn-type="num" data-click="inactive" data-num-btn type="button" aria-label="input-numbers-btn"
+          class="hover:bg-fmediumgray w-[60px] h-[60px] m-2.5 rounded-xl bg-fdarkgray text-fwhite text-xl shadow-sm shadow-fdarktransperent cursor-pointer transition-all duration-200 ease-in-out">
+          5
+        </button>
+        <button data-btn-type="num" data-click="inactive" data-num-btn type="button" aria-label="input-numbers-btn"
+          class="hover:bg-fmediumgray w-[60px] h-[60px] m-2.5 rounded-xl bg-fdarkgray text-fwhite text-xl shadow-sm shadow-fdarktransperent cursor-pointer transition-all duration-200 ease-in-out">
+          6
+        </button>
+        <button data-btn-type="op" data-click="inactive" data-op-btn type="button" aria-label="input-numbers-btn"
+          class="hover:bg-fmediumgray w-[60px] h-[60px] m-2.5 rounded-xl bg-fdarkgray text-fdarkturquoise text-xl shadow-sm shadow-fdarktransperent cursor-pointer transition-all duration-200 ease-in-out">
+          -
+        </button>
+      </div>
+      <div class="flex items-center justify-around">
+        <button data-btn-type="num" data-click="inactive" data-num-btn type="button" aria-label="input-numbers-btn"
+          class="hover:bg-fmediumgray w-[60px] h-[60px] m-2.5 rounded-xl bg-fdarkgray text-fwhite text-xl shadow-sm shadow-fdarktransperent cursor-pointer transition-all duration-200 ease-in-out">
+          1
+        </button>
+        <button data-btn-type="num" data-click="inactive" data-num-btn type="button" aria-label="input-numbers-btn"
+          class="hover:bg-fmediumgray w-[60px] h-[60px] m-2.5 rounded-xl bg-fdarkgray text-fwhite text-xl shadow-sm shadow-fdarktransperent cursor-pointer transition-all duration-200 ease-in-out">
+          2
+        </button>
+        <button data-btn-type="num" data-click="inactive" data-num-btn type="button" aria-label="input-numbers-btn"
+          class="hover:bg-fmediumgray w-[60px] h-[60px] m-2.5 rounded-xl bg-fdarkgray text-fwhite text-xl shadow-sm shadow-fdarktransperent cursor-pointer transition-all duration-200 ease-in-out">
+          3
+        </button>
+        <button data-btn-type="op" data-click="inactive" data-op-btn type="button" aria-label="input-numbers-btn"
+          class="hover:bg-fmediumgray w-[60px] h-[60px] m-2.5 rounded-xl bg-fdarkgray text-fdarkturquoise text-xl shadow-sm shadow-fdarktransperent cursor-pointer transition-all duration-200 ease-in-out">
+          +
+        </button>
+      </div>
+      <div class="flex items-center justify-around">
+        <button data-btn-type="num" data-click="inactive" data-num-btn type="button" aria-label="input-numbers-btn"
+          class="hover:bg-fmediumgray w-[60px] h-[60px] m-2.5 rounded-xl bg-fdarkgray text-fwhite text-xl shadow-sm shadow-fdarktransperent cursor-pointer transition-all duration-200 ease-in-out">
+          00
+        </button>
+        <button data-btn-type="num" data-click="inactive" data-num-btn type="button" aria-label="input-numbers-btn"
+          class="hover:bg-fmediumgray w-[60px] h-[60px] m-2.5 rounded-xl bg-fdarkgray text-fwhite text-xl shadow-sm shadow-fdarktransperent cursor-pointer transition-all duration-200 ease-in-out">
+          0
+        </button>
+        <button data-btn-type="num" data-click="inactive" data-num-btn type="button" aria-label="input-numbers-btn"
+          class="hover:bg-fmediumgray w-[60px] h-[60px] m-2.5 rounded-xl bg-fdarkgray text-fwhite text-xl shadow-sm shadow-fdarktransperent cursor-pointer transition-all duration-200 ease-in-out">
+          .
+        </button>
+        <button data-btn-type="op" data-click="inactive" data-ans-btn type="button" aria-label="input-numbers-btn"
+          class="hover:bg-fmediumgray w-[60px] h-[60px] m-2.5 rounded-xl bg-fdarkgray text-fdarkturquoise text-xl shadow-sm shadow-fdarktransperent cursor-pointer transition-all duration-200 ease-in-out">
+          =
+        </button>
+      </div>
+    </div>
+  </div>
+  <script src="./src/Script.js"></script>
+</body>
+
+</html>
