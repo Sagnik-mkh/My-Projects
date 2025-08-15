@@ -25,15 +25,11 @@ A simple **Tier List** web app where you can:
    - On double-click, the image’s parent container is moved back to the non-tier section.
 
 ## 📂 Project Structure
-
-```bash
-$ tree
 .
 ├── index.html      # Main HTML file
 ├── style.css       # TailwindCSS styles
 ├── script.js       # JS logic for tiers, images, drag & drop
 └── README.md       # Project documentation
-```
 
 ## 🚀 Getting Started
 1. Clone or download this repository.
