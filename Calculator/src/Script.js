@@ -88,6 +88,30 @@ allBtn.addEventListener(`mouseout`, function mouseOutHandler(event) {
     }
 });
 
+// Event: When pointer is over a button (works for mouse & touch)
+allBtn.addEventListener('pointerover', function (event) {
+    const tgt = event.target;
+    if (tgt.tagName === "BUTTON") {
+        const btnType = tgt.getAttribute("data-btn-type");
+        if (tgt.getAttribute("data-click") === "inactive") {
+            tgt.addEventListener(`pointerdown`, function changeStyle() { onClick(btnType, tgt) });
+            tgt.addEventListener(`pointerup`, function reverseStyle() { offClick(tgt) });
+        }
+    }
+});
+
+// Event: When pointer leaves a button (works for mouse & touch)
+allBtn.addEventListener('pointerout', function (event) {
+    const tgt = event.target;
+    if (tgt.tagName === "BUTTON") {
+        const btnType = tgt.getAttribute("data-btn-type");
+        if (tgt.getAttribute("data-click") === "active") {
+            tgt.removeEventListener(`pointerdown`, function changeStyle() { onClick(btnType, tgt) });
+            btnOffClickStyle(tgt, "data-click", "inactive", "background-color", "color");
+        }
+    }
+});
+
 // Event: When equals button is clicked, evaluate the expression
 evalBtn.addEventListener(`click`, function getAns() {
     try {
