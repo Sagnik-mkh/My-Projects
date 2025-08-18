@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="./assets/react-CHdo91hT.svg" type="image/x-icon">
+		<title>Tic-Tak-Toe</title>
+		<script type="module" crossorigin src="./assets/index-DM2MzxrH.js"></script>
+		<link rel="stylesheet" crossorigin href="./assets/index-BM0nDopU.css">
+	</head>
+
+	<body class="m-0 p-0 font-poppins box-border">
+		<div class="flex flex-col justify-center mt-12 items-center gap-24 container mx-auto">
+			<div class="px-8 flex flex-col gap-5">
+				<h1 class="text-2xl sm:text-4xl font-semibold text-center">
+					Welcome to TicTacToe
+				</h1>
+				<div class="flex justify-center items-center flex-wrap">
+					<span data-turn-ind class="text-lg sm:text-xl text-nowrap inline-block md:min-w-28 min-w-24">
+						Turn for X
+					</span>
+					<button data-reset type="button" class="btn btn-accent btn-sm md:btn-md mx-6 text-sm md:text-base">
+						Reset
+					</button>
+				</div>
+			</div>
+			<div class="flex flex-col">
+				<div class="flex items-center">
+					<div data-box data-status="active"
+						class="select-none hover:bg-secondary-content border-2 border-l-0 border-t-0 text-[5vw] cursor-pointer flex justify-center items-center w-[10vw] aspect-square">
+					</div>
+					<div data-box data-status="active"
+						class="select-none hover:bg-secondary-content border-2 border-t-0 text-[5vw] cursor-pointer flex justify-center items-center w-[10vw] aspect-square">
+					</div>
+					<div data-box data-status="active"
+						class="select-none hover:bg-secondary-content border-2 border-r-0 border-t-0 text-[5vw] cursor-pointer flex justify-center items-center w-[10vw] aspect-square">
+					</div>
+				</div>
+				<div class="flex items-center">
+					<div data-box data-status="active"
+						class="select-none hover:bg-secondary-content border-2 border-l-0 text-[5vw] cursor-pointer flex justify-center items-center w-[10vw] aspect-square">
+					</div>
+					<div data-box data-status="active"
+						class="select-none hover:bg-secondary-content border-2 text-[5vw] cursor-pointer flex justify-center items-center w-[10vw] aspect-square">
+					</div>
+					<div data-box data-status="active"
+						class="select-none hover:bg-secondary-content border-2 border-r-0 text-[5vw] cursor-pointer flex justify-center items-center w-[10vw] aspect-square">
+					</div>
+				</div>
+				<div class="flex items-center">
+					<div data-box data-status="active"
+						class="select-none hover:bg-secondary-content border-2 border-l-0 border-b-0 text-[5vw] cursor-pointer flex justify-center items-center w-[10vw] aspect-square">
+					</div>
+					<div data-box data-status="active"
+						class="select-none hover:bg-secondary-content border-2 border-b-0 text-[5vw] cursor-pointer flex justify-center items-center w-[10vw] aspect-square">
+					</div>
+					<div data-box data-status="active"
+						class="select-none hover:bg-secondary-content border-2 border-r-0 border-b-0 text-[5vw] cursor-pointer flex justify-center items-center w-[10vw] aspect-square">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div data-game-over="inactive" class="opacity-0 -z-50 flex fixed justify-center items-center w-full h-full bg-transblack top-0 left-0">
+			<div class="bg-white p-2.5 rounded-lg text-center min-w-xs shadow-2xl">
+				<h2 data-win-card class="text-3xl text-error-content my-6">Player X Wins! 🏆</h2>
+				<button data-play-again type="button" class="btn btn-md btn-error my-6">Play Again</button>
+			</div>
+		</div>
+	</body>
+
+</html>
