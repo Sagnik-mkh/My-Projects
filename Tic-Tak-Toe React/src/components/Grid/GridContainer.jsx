@@ -1,49 +1,52 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Card } from "../Card/Card";
 import Header from "../Header/Header";
 import { ToastContainer, toast } from "react-toastify";
 import { checkWin } from "./Utils";
 import Grid from "./Grid";
+import ting from "../../assets/audio/ting.mp3";
+import win from "../../assets/audio/gameover.mp3";
 
 function GridContainer({ numberOfCells }) {
 	const [turn, setTurn] = useState("X");
 	const [board, setBoard] = useState(Array(numberOfCells).fill(""));
 	const [winner, setWinner] = useState("");
+	const tingSound = useRef(new Audio(ting));
+	const winSound = useRef(new Audio(win));
 	function makeGrid(icon, idx) {
 		return <Card icon={icon} changeTurn={changeTurn} key={idx} idx={idx} />;
 	}
 
 	function changeTurn(idx) {
-		if (board[idx] === "") {
+		if (board[idx] == "") {
+			setTurn(turn == "X" ? "O" : "X");
 			board[idx] = turn;
-			const win = checkWin(board, turn);
-			if (win) {
+			setBoard([...board]);
+			if (checkWin(board, turn)) {
 				setWinner(turn);
-				toast(`${turn} won`);
-				// resetBoard();
-			} else {
+				board.forEach((ele, idx) => {
+					if (ele == "") board[idx] = "pen";
+				});
 				setBoard([...board]);
-				setTurn(turn === "X" ? "O" : "X");
-			}
-			let isFilled = true;
-			let count = 0;
-			board.forEach((element) => {
-				if (element === "") {
-					isFilled = false;
-					count++;
-				}
-			});
-			if (count < numberOfCells && isFilled) {
-				toast(`Draw`);
+				toast(`${turn} Won`);
+				winSound.current.pause();
+				winSound.current.currentTime = 0;
+				winSound.current.play();
+				return;
+			} else if (!board.includes("")) {
 				setWinner("");
+				toast(`Draw`);
 			}
+			tingSound.current.pause();
+			tingSound.current.currentTime = 0;
+			tingSound.current.play();
 		}
 	}
 
 	function resetBoard() {
 		setBoard(Array(numberOfCells).fill(""));
 		setTurn("X");
-		setWinner("")
+		setWinner("");
 	}
 
 	return (
