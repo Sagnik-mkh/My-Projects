@@ -1,11 +1,7 @@
-import Card from "./components/card/Card";
+import GridContainer from "./components/Grid/GridContainer";
 
 function App() {
-	return (
-		<>
-			<Card />
-		</>
-	);
+	return <GridContainer numberOfCells={9} />;
 }
 
 export default App;

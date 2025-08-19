@@ -1,11 +1,21 @@
-import Icon from "../Icons/Icon";
+import { Icons } from "../Icons/Icon";
 
-function Card() {
+export const Card = function ({ changeTurn, idx, icon }) {
+	let currIcon = <Icons nameOfIcon={"pen"} />;
+	if (icon === "X") {
+		currIcon = <Icons nameOfIcon={"cross"} />;
+	} else if (icon === "O") {
+		currIcon = <Icons nameOfIcon={"circle"} />;
+	}
+
 	return (
-		<div className="card">
-			<Icon />
-		</div>
+		<>
+			<div
+				onClick={() => changeTurn(idx)}
+				className="flex items-center justify-center text-4xl border-2 border-black rounded-md bg-amber-300 text-neutral-800"
+			>
+				{currIcon}
+			</div>
+		</>
 	);
-}
-
-export default Card;
+};
