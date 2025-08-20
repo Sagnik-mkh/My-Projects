@@ -1,3 +1,6 @@
+import win from "../../assets/audio/gameover.mp3";
+import ting from "../../assets/audio/ting.mp3";
+
 export const checkWin = function (currBoard, player) {
 	const winCond = [
 		[0, 1, 2],
@@ -26,4 +29,18 @@ export const checkWin = function (currBoard, player) {
 			return true;
 		}
 	}
+};
+
+export const makeGameOverSound = function () {
+	const winSound = new Audio(win);
+	winSound.pause();
+	winSound.currentTime = 0;
+	winSound.play();
+};
+
+export const makeTingSound = function () {
+	const tingSound = new Audio(ting);
+	tingSound.pause();
+	tingSound.currentTime = 0;
+	tingSound.play();
 };
