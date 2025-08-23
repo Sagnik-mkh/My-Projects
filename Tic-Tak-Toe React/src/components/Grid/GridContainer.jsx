@@ -17,21 +17,20 @@ function GridContainer({ numberOfCells }) {
 		if (board[idx] == "") {
 			setTurn(turn == "X" ? "O" : "X");
 			board[idx] = turn;
-			if (checkWin(board, turn)) {
+			const isWin = checkWin(board, turn);
+			const isDraw = !board.includes("");
+			if (isWin) {
 				setWinner(turn);
 				board.forEach(
 					(ele, idx) => (board[idx] = ele == "" ? "pen" : ele)
 				);
-				makeGameOverSound();
-				toast(`${turn} Won`);
-				return;
-			} else if (!board.includes("")) {
+				toast(`${winner} Won`);
+			} else if (isDraw) {
 				setWinner("");
-				makeGameOverSound();
 				toast(`Draw`);
 			}
 			setBoard([...board]);
-			makeTingSound();
+			isWin || isDraw ? makeGameOverSound() : makeTingSound();
 		}
 	}
 
