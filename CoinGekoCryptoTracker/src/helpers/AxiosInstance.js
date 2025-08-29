@@ -1,5 +1,5 @@
 import axios from "axios";
-import { COINGEKO_API_URL } from "./constants";
+import { COINGEKO_API_URL } from "./Constants";
 
 const axiosInstance = axios.create({
 	baseURL: COINGEKO_API_URL,
