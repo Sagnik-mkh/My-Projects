@@ -1,13 +1,20 @@
-import Banner from "../components/Banner/Banner";
-import CoinTable from "../components/CoinTable/CoinTable";
-import NavBar from "../components/NavBar.jsx/NavBar";
+import { lazy, Suspense } from "react";
+import { MyListLoader, MyImgLoader } from "../components/Loader/PageLoader";
+
+const CoinTableContainer = lazy(() =>
+	import("../components/CoinTable/CoinTableContainer")
+);
+const Banner = lazy(() => import("../components/Banner/Banner"));
 
 function Home() {
 	return (
 		<>
-			<NavBar name={"Crypto Tracker"} dropdownItems={["USD", "INR", "EUR"]}/>
-			<Banner />
-			<CoinTable />
+			<Suspense fallback={<MyImgLoader />}>
+				<Banner header={"Crypto Tracker"} subHeader={"Get all information regarding cryptocurrency"} />
+			</Suspense>
+			<Suspense fallback={<MyListLoader />}>
+				<CoinTableContainer />
+			</Suspense>
 		</>
 	);
 }

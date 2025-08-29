@@ -1,129 +1,121 @@
-import { useState } from "react";
-import FetchCoinData from "../../services/FetchCoinData";
-import { useQuery } from "@tanstack/react-query";
+import { PageStore } from "../../zustand/store";
+import { formatLargeNumber, getCurrencySymbol } from "../../Util/Util";
 import Button from "../Button/Button";
-import store from "../../store/store";
+import { ErrorLoader, Loader } from "../Loader/PageLoader";
 
-function CoinTable() {
-	const [page, setPage] = useState(1);
-	const { currency } = store();
-	const { isPending, isError, data, error, refetch } = useQuery({
-		queryKey: ["coin", page, currency],
-		queryFn: () => FetchCoinData(page, currency),
-		// retry: 2,
-		// retryDelay: 1000,
-		// cacheTime: 2 * 60 * 1000,
-		staleTime: 2 * 60 * 1000,
-	});
-
+function CoinTable({
+	isPending,
+	isFetching,
+	isError,
+	error,
+	isSuccess,
+	refetch,
+	data,
+	currency,
+	navigator,
+}) {
+	const { page, incPage, decPage } = PageStore();
 	return (
 		<>
-			<div className="container grid grid-flow-row px-4 mx-auto my-8">
+			<div className="custom-table">
 				{/* Header */}
-				<ul className="grid grid-cols-4 text-xl font-semibold text-center rounded-t-lg bg-primary text-primary-content">
-					<li className="p-2 border-r-2 border-secondary-content">
-						Coin
-					</li>
-					<li className="p-2 border-r-2 border-secondary-content">
-						Price
-					</li>
-					<li className="p-2 border-r-2 border-secondary-content">
-						24hr Change
-					</li>
-					<li className="p-2">Market Cap</li>
+				<ul className="custom-table-header">
+					<li className="custom-header-row">Coin</li>
+					<li className="custom-header-row">Price</li>
+					<li className="custom-header-row">24hr Change</li>
+					<li className="p-2 text-center">Market Cap</li>
 				</ul>
-				{isPending && (
-					<div className="flex justify-center my-8">
-						<div className="btn btn-accent btn-lg">
-							<span className="mr-2 loading loading-spinner loading-lg text-accent-content"></span>
-							<span>Loading...</span>
-						</div>
-					</div>
+				{/* If Loading */}
+				{(isPending || isFetching) && (
+					<Loader color="btn-success" style={"btn-soft"} />
 				)}
+				{/* If error */}
 				{isError && (
-					<div className="flex justify-center my-8">
-						<div className="flex flex-col items-center justify-center alert alert-error alert-soft w-fit">
-							<i className="fa-solid fa-triangle-exclamation"></i>
-							<span>{error.message}</span>
-							<Button
-								text={"Retry"}
-								color={"warning"}
-								style={"outline"}
-								onClickHandler={() => refetch()}
-							/>
-						</div>
-					</div>
+					<ErrorLoader
+						onClickHandler={() => refetch()}
+						errorMessage={error.message}
+					/>
 				)}
 				{/* Data */}
-				{!isPending &&
-					!isError &&
-					data &&
+				{isSuccess &&
 					data.map((coin) => {
+						const coinPrice = `${getCurrencySymbol(
+							currency
+						)}${formatLargeNumber(
+							coin.current_price
+						).toLocaleString()}`;
+						const coinMarketCap = `${getCurrencySymbol(
+							currency
+						)}${formatLargeNumber(
+							coin.market_cap
+						).toLocaleString()}`;
+						const coinChangePct = `${coin.price_change_percentage_24h.toFixed(
+							2
+						)}%`;
 						return (
 							<ul
+								onClick={function goToCoinDetails() {
+									navigator(`/details/${coin.id}`);
+								}}
 								key={coin.id}
-								className="grid grid-cols-4 p-2 text-center border-b hover:bg-base-200"
+								className="custom-table-row"
 							>
-								<li className="flex items-center gap-2">
+								<li className="flex flex-col items-center gap-2 md:flex-row">
 									<img
 										src={coin.image}
 										alt={coin.name}
 										className="w-8 h-8"
+										loading="lazy"
 									/>
-									<span>{coin.name}</span>
+									<span className="hidden md:inline">
+										{coin.name}
+									</span>
 									<span className="text-gray-500 uppercase">
 										{coin.symbol}
 									</span>
 								</li>
-								<li>
-									{currency === "usd"
-										? "$"
-										: currency === "inr"
-										? "inr"
-										: `${currency} `}
-									{coin.current_price.toLocaleString()}
-								</li>
+								<li>{coinPrice}</li>
 								<li
 									className={
 										coin.price_change_percentage_24h > 0
-											? "text-green-500"
-											: "text-red-500"
+											? "text-success"
+											: "text-error"
 									}
 								>
-									{coin.price_change_percentage_24h.toFixed(
-										2
-									)}
-									%
+									{coinChangePct}
 								</li>
-								<li>${coin.market_cap.toLocaleString()}</li>
+								<li>{coinMarketCap}</li>
 							</ul>
 						);
 					})}
 				{/* Refresh */}
 				<div className="flex justify-center mt-4">
 					<Button
-						size={"sm"}
-						color={"info"}
-						style={"outline"}
+						size={"btn-sm"}
+						color={"btn-info"}
+						style={"btn-outline"}
 						text={"Refresh"}
-						onClickHandler={() => refetch()}
+						onClickHandler={function refreshData() {
+							refetch();
+						}}
 						isDisabled={isPending || isError}
 					>
-						<i className="fa-solid fa-arrows-rotate mr-2"></i>
+						<i className="mr-2 fa-solid fa-arrows-rotate"></i>
 					</Button>
 				</div>
 				{/* Pagination */}
-				<div className="flex justify-center gap-4 mt-8">
+				<div className="flex items-center justify-center gap-4 mt-8">
 					<Button
-						color={"secondary"}
+						color={"btn-secondary"}
 						text={"Prev"}
 						isDisabled={page === 1}
-						onClickHandler={() => setPage(page - 1)}
+						onClickHandler={decPage}
 					/>
+					<span className="p-1 font-semibold">{page}</span>
 					<Button
-						color={"secondary"}
+						color={"btn-secondary"}
 						text={"Next"}
-						onClickHandler={() => setPage(page + 1)}
+						onClickHandler={incPage}
 					/>
 				</div>
 			</div>

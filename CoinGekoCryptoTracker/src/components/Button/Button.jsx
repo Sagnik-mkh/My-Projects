@@ -1,9 +1,6 @@
-import { getButtonStyle } from "../../Util/Util";
-
 function Button({ text, color, style, size, onClickHandler, isDisabled = false, children }) {
-	const buttonClass = getButtonStyle(style, color, size);
 	return (
-		<button disabled={isDisabled} onClick={onClickHandler} className={`${buttonClass}`}>
+		<button disabled={isDisabled} onClick={onClickHandler} className={`btn ${color} ${style} ${size}`}>
 			{children}
 			{text}
 		</button>
