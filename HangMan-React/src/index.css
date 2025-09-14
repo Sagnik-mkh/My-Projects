@@ -7,3 +7,11 @@
 @theme {
 	--font-poppins: "Poppins", sans-serif;
 }
+
+@layer utilities {
+	.heroBackground1 {
+		background-image: url("./assets/img/HeroBgImg.png");
+		background-repeat: no-repeat;
+		width: 100%;
+	}
+}

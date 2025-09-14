@@ -1,16 +1,15 @@
 import React from "react";
-import { getBtnSize, getBtnStyle } from "../Util/Utility";
 
-function Button({ btnText, onClickHandler, type, size, btnType }) {
-	const btnStyle = getBtnStyle(type);
-	const btnSize = getBtnSize(size);
-
+function Button({ btnText, onClickHandler, onMouseDownHandler, onMouseUpHandler, onMouseLeaveHandler, type, size, btnType }) {
 	return (
 		<React.Fragment>
 			<button
 				type={btnType}
-				className={`${btnStyle} ${btnSize}`}
-				onClick={onClickHandler}
+				className={`btn ${type} ${size}`}
+				onClick={onClickHandler} // on click event listener
+				onMouseDown={onMouseDownHandler}
+				onMouseUp={onMouseUpHandler}
+				onMouseLeave={onMouseLeaveHandler}
 			>
 				{btnText}
 			</button>

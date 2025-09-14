@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+	themes: all;
+}
+
+@theme {
+	--animate-shake: shake-animation 0.2s ease-in-out 3;
+	@keyframes shake-animation {
+		0% {
+			transform: translateX(0px);
+		}
+		25% {
+			transform: translateX(-0.5rem);
+		}
+		50% {
+			transform: translateX(0px);
+		}
+		75% {
+			transform: translateX(0.5rem);
+		}
+		100% {
+			transform: translateX(0px);
+		}
+	}
+}
