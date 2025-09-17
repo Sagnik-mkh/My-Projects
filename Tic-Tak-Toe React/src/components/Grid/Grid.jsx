@@ -1,7 +1,8 @@
-function Grid({ board, makeGrid }) {
+function Grid({ board, makeCard }) {
 	return (
-		<div className="h-[500px] w-[500px] grid grid-cols-3 mx-auto gap-0.5">
-			{board.map(makeGrid)}
+		<div className="w-[300px] sm:w-[500px] aspect-square grid grid-cols-3 mx-auto gap-0.5">
+			{/* Making all the cards from array */}
+			{board.map((item, idx) => makeCard(item, idx))}
 		</div>
 	);
 }

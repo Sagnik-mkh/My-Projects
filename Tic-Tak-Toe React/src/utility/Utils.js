@@ -1,7 +1,9 @@
-import win from "../../assets/audio/gameover.mp3";
-import ting from "../../assets/audio/ting.mp3";
+import win from "../assets/audio/gameover.mp3";
+import ting from "../assets/audio/ting.mp3";
 
+// check win condition
 export const checkWin = function (currBoard, player) {
+	// win conditions--array to have same elements in one combination
 	const winCond = [
 		[0, 1, 2],
 		[3, 4, 5],
@@ -13,11 +15,13 @@ export const checkWin = function (currBoard, player) {
 		[2, 4, 6],
 	];
 
+	// checking for each combination
 	for (let [a, b, c] of winCond) {
 		const val1 = currBoard[a];
 		const val2 = currBoard[b];
 		const val3 = currBoard[c];
 
+		// if all 3 values are same && equal to current value then game won by current player
 		if (
 			val1 != "" &&
 			val2 != "" &&
@@ -29,6 +33,7 @@ export const checkWin = function (currBoard, player) {
 			return true;
 		}
 	}
+	return false;
 };
 
 export const makeGameOverSound = function () {
