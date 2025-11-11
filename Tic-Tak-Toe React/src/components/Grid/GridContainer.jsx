@@ -32,7 +32,7 @@ function GridContainer({ numberOfCells }) {
 	const changeTurn = function (idx) {
 		// perform operation only if card has not been filled yet or winner not decided
 		if (board[idx] == "" && winner == "") {
-			board[idx] = turn; // filling the array element with the player value
+			board[idx] = turn; // filling current element in array with the player value
 			const isGameOver = chkGameOver(turn, board); // checking game over
 			isGameOver ? makeGameOverSound() : makeTingSound(); // sound effects
 			if (!isGameOver) setTurn(turn == "X" ? "O" : "X"); // turn changes on next re-render when game is not over
