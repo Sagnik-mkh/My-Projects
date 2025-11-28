@@ -2,3 +2,112 @@
 @plugin "daisyui" {
 	themes: all;
 }
+
+/* Pokémon Type Colors */
+:root {
+	--pokemon-normal: #a8a77a;
+	--pokemon-fire: #ee8130;
+	--pokemon-water: #6390f0;
+	--pokemon-electric: #f7d02c;
+	--pokemon-grass: #7ac74c;
+	--pokemon-ice: #96d9d6;
+	--pokemon-fighting: #c22e28;
+	--pokemon-poison: #a33ea1;
+	--pokemon-ground: #e2bf65;
+	--pokemon-flying: #a98ff3;
+	--pokemon-psychic: #f95587;
+	--pokemon-bug: #a6b91a;
+	--pokemon-rock: #b6a136;
+	--pokemon-ghost: #735797;
+	--pokemon-dragon: #6f35fc;
+	--pokemon-dark: #705746;
+	--pokemon-steel: #b7b7ce;
+	--pokemon-fairy: #d685ad;
+}
+
+/* Utility classes */
+.bg-pokemon-normal {
+	background-color: var(--pokemon-normal);
+}
+.bg-pokemon-fire {
+	background-color: var(--pokemon-fire);
+	color: white;
+}
+.bg-pokemon-water {
+	background-color: var(--pokemon-water);
+	color: white;
+}
+.bg-pokemon-electric {
+	background-color: var(--pokemon-electric);
+}
+.bg-pokemon-grass {
+	background-color: var(--pokemon-grass);
+}
+.bg-pokemon-ice {
+	background-color: var(--pokemon-ice);
+}
+.bg-pokemon-fighting {
+	background-color: var(--pokemon-fighting);
+	color: white;
+}
+.bg-pokemon-poison {
+	background-color: var(--pokemon-poison);
+	color: white;
+}
+.bg-pokemon-ground {
+	background-color: var(--pokemon-ground);
+}
+.bg-pokemon-flying {
+	background-color: var(--pokemon-flying);
+}
+.bg-pokemon-psychic {
+	background-color: var(--pokemon-psychic);
+}
+.bg-pokemon-bug {
+	background-color: var(--pokemon-bug);
+}
+.bg-pokemon-rock {
+	background-color: var(--pokemon-rock);
+	color: white;
+}
+.bg-pokemon-ghost {
+	background-color: var(--pokemon-ghost);
+	color: white;
+}
+.bg-pokemon-dragon {
+	background-color: var(--pokemon-dragon);
+}
+.bg-pokemon-dark {
+	background-color: var(--pokemon-dark);
+	color: white;
+}
+.bg-pokemon-steel {
+	background-color: var(--pokemon-steel);
+}
+.bg-pokemon-fairy {
+	background-color: var(--pokemon-fairy);
+}
+
+@layer utilities {
+	@keyframes poke-pop {
+		0% {
+			transform: translateY(0px);
+		}
+		25% {
+			transform: translateY(-3px);
+		}
+		50% {
+			transform: translateY(-6px);
+		}
+		75% {
+			transform: translateY(-3px);
+		}
+		100% {
+			transform: translateY(0);
+		}
+	}
+
+	.hover\:poke-pop:hover {
+		animation: poke-pop 200ms ease-in-out forwards;
+	}
+}

@@ -1,8 +1,8 @@
-import axiosInstance from "../helper/AxiosInstance";
+import axios from "axios";
 
-async function FetchPokemonList() {
+async function FetchPokemonList(url) {
 	try {
-		const reponse = await axiosInstance.get("/pokemon");
+		const reponse = await axios.get(url);
 		return reponse.data;
 	} catch (error) {
 		console.log("Error fetching pokemon list:", error);
