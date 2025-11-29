@@ -103,6 +103,8 @@ React Router setup:
 | Bundler | Vite |
 | State Management | Zustand |
 | Routing | React Router |
+| Fetch | Axios |
+| Query | TanStack Query |
 | API | CoinGecko API |
 | Styling | CSS |
 
