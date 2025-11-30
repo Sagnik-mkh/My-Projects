@@ -1,6 +1,13 @@
 import Card from "../Card/Card";
+import { useNavigate } from "react-router";
 
 function Pokemon({ pokemonId, pokemonName, pokemonType, pokemonImage }) {
+	const navigator = useNavigate();
+
+	function onClickHandler() {
+		navigator(`/details/${pokemonName}`);
+	}
+
 	return (
 		<>
 			<Card
@@ -9,6 +16,7 @@ function Pokemon({ pokemonId, pokemonName, pokemonType, pokemonImage }) {
 				title={pokemonName}
 				cardId={pokemonId}
 				badges={pokemonType}
+				onClickHandler={onClickHandler}
 			/>
 		</>
 	);

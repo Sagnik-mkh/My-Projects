@@ -1,12 +1,10 @@
 import axios from "axios";
 import FetchPokemonList from "./FetchPokemonList";
-import { POKEDEX_API_BASE_URL } from "../helper/Constants";
 
 async function FetchPokemonDetails(url) {
 	try {
 		const response = await FetchPokemonList(url);
 		const pokemonResults = response?.results;
-		console.log(response);
 		const pokemonNextUrl = response.next;
 		const pokemonPrevUrl = response.previous;
 		const pokemonUrls = pokemonResults.map((poke) => axios.get(poke?.url));
