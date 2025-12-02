@@ -2,7 +2,23 @@
 import React from "react";
 import Capitalize from "../../Helper/Capitalize";
 
-const AboutPokemon = ({ height, weight, category, abilities }) => {
+export default React.memo(function AboutPokemon({
+	height,
+	weight,
+	category,
+	abilities,
+}) {
+	/**
+	 * ----------------------
+	 * Render the about pokemon
+	 * ----------------------
+	 * @param {number} height - The height of the pokemon
+	 * @param {number} weight - The weight of the pokemon
+	 * @param {string} category - The category of the pokemon
+	 * @param {string} abilities - The abilities of the pokemon
+	 * @returns {JSX.Element} The about pokemon component
+	 */
+
 	return (
 		<div className="w-5/6 rounded-xl bg-[#48a8db] px-8 py-6 text-slate-900">
 			<div className="grid grid-cols-1 gap-y-8 gap-x-16 md:grid-cols-2">
@@ -55,6 +71,4 @@ const AboutPokemon = ({ height, weight, category, abilities }) => {
 			</div>
 		</div>
 	);
-};
-
-export default AboutPokemon;
+});

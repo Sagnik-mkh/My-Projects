@@ -1,8 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
-import FetchPokemonList from "../services/FetchPokemonList";
 import FetchEvolution from "../services/FetchEvolution";
 
+/**
+ * ----------------------
+ * Custom hook to fetch the evolution of a pokemon
+ * ----------------------
+ * @param {number} id - The id of the pokemon
+ * @returns {object} The evolution of the pokemon
+ */
 function usePokeEvo(id) {
+	/**
+	 * ----------------------
+	 * Fetch the evolution of a pokemon
+	 * ----------------------
+	 * @param {number} id - The id of the pokemon
+	 * @returns {object} The evolution of the pokemon
+	 */
 	const { data, isSuccess, isPending, isLoading, isError, refetch } =
 		useQuery({
 			queryKey: ["pokemon", id],

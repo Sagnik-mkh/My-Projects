@@ -1,7 +1,21 @@
 import axios from "axios";
 import { POKEDEX_API_BASE_URL } from "../Helper/Constants";
 
+/**
+ * ----------------------
+ * Fetch the evolution images
+ * ----------------------
+ * @param {array} evolution - The evolution of the pokemon
+ * @returns {array} The evolution images
+ */
 async function FetchEvoImages(evolution) {
+	/**
+	 * ----------------------
+	 * Fetch the evolution images
+	 * ----------------------
+	 * @param {array} evolution - The evolution of the pokemon
+	 * @returns {array} The evolution images
+	 */
 	const response = evolution.map((species) =>
 		axios.get(`${POKEDEX_API_BASE_URL}/${species.name}`)
 	);

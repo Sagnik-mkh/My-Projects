@@ -3,15 +3,16 @@ import usePokeShortInfo from "../../hooks/usePokeShortInfo";
 import usePokeList from "../../hooks/usePokeList";
 import Pagination from "./Pagination";
 import PokeCards from "./PokeCards";
-import { useState } from "react";
+import React, { useState } from "react";
 import PokeCardSkeleton from "../Loader/CustomListLoader";
 
-function PokemonList() {
+export default React.memo(function PokemonList() {
 	/**
 	 * ----------------------
 	 * State for maintaining the current page data API url
 	 * Changes basis pagination
 	 * ----------------------
+	 * @returns {JSX.Element} The pokemon list component
 	 */
 	const [pokeApiUrl, setApiUrl] = useState(POKEDEX_API_BASE_URL);
 
@@ -80,6 +81,4 @@ function PokemonList() {
 			</div>
 		);
 	}
-}
-
-export default PokemonList;
+});

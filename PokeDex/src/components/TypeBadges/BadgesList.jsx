@@ -1,6 +1,15 @@
+import React from "react";
 import TypeBadges from "./TypeBadges";
 
-function BadgesList({ names, text }) {
+export default React.memo(function BadgesList({ names, text }) {
+	/**
+	 * ----------------------
+	 * Render the badges list
+	 * ----------------------
+	 * @param {array} names - The names of the badges
+	 * @param {string} text - The text of the badges
+	 * @returns {JSX.Element} The badges list component
+	 */
 	return (
 		<div>
 			<h2 className="mb-3 text-lg">{text}</h2>
@@ -13,6 +22,4 @@ function BadgesList({ names, text }) {
 			/>
 		</div>
 	);
-}
-
-export default BadgesList;
+});

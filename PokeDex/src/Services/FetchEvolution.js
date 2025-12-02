@@ -1,7 +1,21 @@
 import axios from "axios";
 import { POKEDEX_API_SPECIES_URL } from "../Helper/Constants";
 
+/**
+ * ----------------------
+ * Fetch the evolution
+ * ----------------------
+ * @param {number} id - The id of the pokemon
+ * @returns {array} The evolution
+ */
 async function FetchEvolution(id) {
+	/**
+	 * ----------------------
+	 * Fetch the evolution
+	 * ----------------------
+	 * @param {number} id - The id of the pokemon
+	 * @returns {array} The evolution
+	 */
 	// 1. Fetch species data
 	const response = await axios.get(`${POKEDEX_API_SPECIES_URL}/${id}`);
 	const speciesData = response.data;

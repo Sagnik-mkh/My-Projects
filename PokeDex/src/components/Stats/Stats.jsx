@@ -5,9 +5,14 @@ import Capitalize from "../../Helper/Capitalize";
 const MAX_BLOCKS = 15; // how many rows per column
 const MAX_STAT_VALUE = 255; // Pokémon base stats max (for scaling)
 
-const StatsTable = ({ stats }) => {
-	// stats should be an array like:
-	// [{ label: "HP", value: 80 }, { label: "Attack", value: 120 }, ...]
+export default React.memo(function StatsTable({ stats }) {
+	/**
+	 * ----------------------
+	 * Render the stats table
+	 * ----------------------
+	 * @param {array} stats - The stats of the pokemon
+	 * @returns {JSX.Element} The stats table component
+	 */
 	return (
 		<div className="p-6 w-full rounded-2xl bg-neutral-400">
 			<h2 className="mb-6 text-gray-800">Stats</h2>
@@ -57,6 +62,4 @@ const StatsTable = ({ stats }) => {
 			</div>
 		</div>
 	);
-};
-
-export default StatsTable;
+});

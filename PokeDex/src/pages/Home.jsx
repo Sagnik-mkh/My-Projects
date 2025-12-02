@@ -2,6 +2,13 @@ import PokemonList from "../components/PokemonList/PokemonList";
 import Search from "../components/Search/Search";
 
 function PokeDex({ header = "PokeDex" }) {
+	/**
+	 * ----------------------
+	 * Render the home page
+	 * ----------------------
+	 * @param {string} header - The header of the home page
+	 * @returns {JSX.Element} The home page component
+	 */
 	return (
 		<div className="flex flex-col justify-center items-center">
 			{/* Header */}

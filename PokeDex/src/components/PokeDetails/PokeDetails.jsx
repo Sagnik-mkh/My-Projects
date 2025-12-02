@@ -1,12 +1,28 @@
 import AboutPokemon from "../About/AboutPokemon";
 import StatsTable from "../Stats/Stats";
-import Header from "./Header";
 import BadgesList from "../TypeBadges/BadgesList";
+import Capitalize from "../../Helper/Capitalize";
+import React from "react";
 
-function PokeDetails({ pokeData, speciesData, weaknessData }) {
+export default React.memo(function PokeDetails({
+	pokeData,
+	speciesData,
+	weaknessData,
+}) {
+	/**
+	 * ----------------------
+	 * Render the poke details
+	 * ----------------------
+	 * @param {object} pokeData - The data of the pokemon
+	 * @param {object} speciesData - The data of the species
+	 * @param {array} weaknessData - The data of the weakness
+	 * @returns {JSX.Element} The poke details component
+	 */
 	return (
 		<>
-			<Header name={pokeData.name} id={pokeData.id} />
+			<h1 className="my-12 text-4xl text-center bg-base-100">
+				{Capitalize(pokeData.name)} #{pokeData.id}
+			</h1>
 			<div className="flex justify-center items-start mx-auto max-w-2/3 gap-12">
 				<div className="basis-1/2 flex flex-col gap-6">
 					<img
@@ -33,6 +49,4 @@ function PokeDetails({ pokeData, speciesData, weaknessData }) {
 			</div>
 		</>
 	);
-}
-
-export default PokeDetails;
+});

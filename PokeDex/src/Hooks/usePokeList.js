@@ -1,7 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import FetchPokemonList from "../services/FetchPokemonList";
 
+/**
+ * ----------------------
+ * Custom hook to fetch the list of pokemon
+ * ----------------------
+ * @param {string} url - The url to fetch the list of pokemon
+ * @returns {object} The list of pokemon
+ */
 function usePokeList(url) {
+	/**
+	 * ----------------------
+	 * Fetch the list of pokemon
+	 * ----------------------
+	 * @param {string} url - The url to fetch the list of pokemon
+	 * @returns {object} The list of pokemon
+	 */
 	const { data, isSuccess, isPending, isLoading, isError, refetch } =
 		useQuery({
 			queryKey: ["pokemon", url],

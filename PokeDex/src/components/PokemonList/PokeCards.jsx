@@ -1,12 +1,15 @@
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 import Pokemon from "../Pokemon/Pokemon";
 
-function PokeCards({ infoData, infoLoading }) {
+export default React.memo(function PokeCards({ infoData, infoLoading }) {
 	/**
-	 * -----------------------------------------
+	 * ----------------------
 	 * Memoize Pokémon card rendering
 	 * Only recompute when data.list changes
-	 * -----------------------------------------
+	 * ----------------------
+	 * @param {array} infoData - The data of the pokemon
+	 * @param {boolean} infoLoading - Whether the info data is loading
+	 * @returns {JSX.Element} The pokemon cards component
 	 */
 	const allCards = useMemo(() => {
 		if (!infoData || infoLoading) return null;
@@ -23,6 +26,4 @@ function PokeCards({ infoData, infoLoading }) {
 	}, [infoData, infoLoading]);
 
 	return allCards;
-}
-
-export default PokeCards;
+});

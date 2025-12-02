@@ -1,7 +1,27 @@
+import React from "react";
 import Capitalize from "../../Helper/Capitalize";
 import TypeBadges from "../TypeBadges/TypeBadges";
 
-function Card({ imageUrl, imageAlt, title, cardId, badges, onClickHandler }) {
+export default React.memo(function Card({
+	imageUrl,
+	imageAlt,
+	title,
+	cardId,
+	badges,
+	onClickHandler,
+}) {
+	/**
+	 * ----------------------
+	 * Render the card
+	 * ----------------------
+	 * @param {string} imageUrl - The url of the image
+	 * @param {string} imageAlt - The alt text of the image
+	 * @param {string} title - The title of the card
+	 * @param {number} cardId - The id of the card
+	 * @param {array} badges - The badges of the card
+	 * @param {function} onClickHandler - The function to be called when the card is clicked
+	 * @returns {JSX.Element} The card component
+	 */
 	return (
 		<div
 			onClick={onClickHandler}
@@ -33,6 +53,4 @@ function Card({ imageUrl, imageAlt, title, cardId, badges, onClickHandler }) {
 			</div>
 		</div>
 	);
-}
-
-export default Card;
+});

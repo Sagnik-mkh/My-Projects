@@ -5,11 +5,23 @@ import usePokeShortInfo from "../../hooks/usePokeShortInfo";
 import usePokeType from "../../hooks/usePokeType";
 import PokeDetails from "./PokeDetails";
 import PokeBallLoader from "../Loader/PokeBallLoader";
-import PokeEvolution from "./PokeEvolution";
+import PokeEvoContainer from "../Evo/PokeEvoContainer";
 
 function PokeDetailsContainer() {
+	/**
+	 * ----------------------
+	 * Render the poke details container
+	 * ----------------------
+	 * @returns {JSX.Element} The poke details container component
+	 */
 	const { pokemon } = useParams();
 
+	/**
+	 * ----------------------
+	 * Render the species data
+	 * ----------------------
+	 * @returns {JSX.Element} The species data component
+	 */
 	const {
 		data: speciesData,
 		isLoading: speciesLoading,
@@ -47,7 +59,7 @@ function PokeDetailsContainer() {
 					speciesData={speciesData}
 					weaknessData={weaknessData}
 				/>
-				<PokeEvolution pokeId={pokeDataArray[0].id} />
+				<PokeEvoContainer pokeId={pokeDataArray[0].id} />
 			</>
 		);
 	}

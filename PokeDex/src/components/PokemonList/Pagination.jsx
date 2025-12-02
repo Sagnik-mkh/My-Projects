@@ -1,6 +1,20 @@
+import React from "react";
 import Button from "../Button/Button";
 
-function Pagination({ goToNextUrl, goToPrevUrl, isDisable }) {
+export default React.memo(function Pagination({
+	goToNextUrl,
+	goToPrevUrl,
+	isDisable,
+}) {
+	/**
+	 * ----------------------
+	 * Render the pagination
+	 * ----------------------
+	 * @param {function} goToNextUrl - The function to go to the next url
+	 * @param {function} goToPrevUrl - The function to go to the previous url
+	 * @param {boolean} isDisable - Whether the button is disabled
+	 * @returns {JSX.Element} The pagination component
+	 */
 	return (
 		<div className="flex justify-center items-center gap-6 mb-6">
 			<Button
@@ -19,6 +33,4 @@ function Pagination({ goToNextUrl, goToPrevUrl, isDisable }) {
 			/>
 		</div>
 	);
-}
-
-export default Pagination;
+});

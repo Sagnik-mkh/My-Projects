@@ -1,8 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import FetchPokeInfo from "../services/FetchPokeInfo";
 
-// args -> url -> array
+/**
+ * ----------------------
+ * Custom hook to fetch the short info of a pokemon
+ * ----------------------
+ * @param {array} urls - The urls to fetch the short info of the pokemon
+ * @returns {object} The short info of the pokemon
+ */	
 function usePokeShortInfo(urls) {
+	/**
+	 * ----------------------
+	 * Fetch the short info of a pokemon
+	 * ----------------------
+	 * @param {array} urls - The urls to fetch the short info of the pokemon
+	 * @returns {object} The short info of the pokemon
+	 */
 	const { data, isSuccess, isLoading, isPending, isError, refetch } =
 		useQuery({
 			queryKey: urls,

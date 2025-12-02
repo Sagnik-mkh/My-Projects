@@ -1,6 +1,20 @@
 import axios from "axios";
 
+/**
+ * ----------------------
+ * Fetch the pokemon info
+ * ----------------------
+ * @param {array} urls - The urls of the pokemon
+ * @returns {object} The pokemon info
+ */
 async function FetchPokeInfo(urls) {
+	/**
+	 * ----------------------
+	 * Fetch the pokemon info
+	 * ----------------------
+	 * @param {array} urls - The urls of the pokemon
+	 * @returns {object} The pokemon info
+	 */
 	try {
 		// returning response
 		const response = urls.map((ele) => axios.get(ele));

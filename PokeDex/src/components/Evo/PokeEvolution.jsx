@@ -1,29 +1,16 @@
-import { POKEDEX_API_BASE_URL } from "../../Helper/Constants";
-import usePokeEvo from "../../hooks/usePokeEvo";
-import usePokeShortInfo from "../../hooks/usePokeShortInfo";
+import React from "react";
 import EvoPokemon from "../Pokemon/EvoPokemon";
 
-function PokeEvolution({ pokeId }) {
-	const {
-		data: evoData,
-		isLoading: evoLoading,
-		isSuccess: evoSuccess,
-		isError: evoError,
-	} = usePokeEvo(pokeId);
-
-	const {
-		data: infoData,
-		isLoading: infoLoading,
-		isSuccess: infoSuccess,
-		isError: infoError,
-	} = usePokeShortInfo(
-		evoData?.map((ele) => `${POKEDEX_API_BASE_URL}/${ele}`)
-	);
-
-	if (infoLoading || evoLoading) return <div>Loading...</div>;
-
-	if (infoError || evoError) return <div>{infoError}</div>
-
+export default React.memo(function PokeEvolution({ infoSuccess, infoData, evoSuccess }) {
+	/**
+	 * ----------------------
+	 * Render the poke evolution
+	 * ----------------------
+	 * @param {boolean} infoSuccess - Whether the info data is success
+	 * @param {array} infoData - The info data
+	 * @param {boolean} evoSuccess - Whether the evo data is success
+	 * @returns {JSX.Element} The poke evolution component
+	 */
 	return (
 		<div className="px-2 py-6 rounded-lg bg-black/65">
 			<h2 className="ml-4 mb-6 text-2xl text-white">Evolutions</h2>
@@ -49,6 +36,4 @@ function PokeEvolution({ pokeId }) {
 			</div>
 		</div>
 	);
-}
-
-export default PokeEvolution;
+});
