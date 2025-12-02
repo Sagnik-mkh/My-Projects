@@ -1,46 +1,40 @@
 import axios from "axios";
-import FetchPokeDmg from "./FetchPokeDmg";
-import FetchEvolution from "./FetchEvolution";
-import { POKEDEX_API_BASE_URL, POKEDEX_API_EVO_URL } from "../Helper/Constants";
 
-async function FetchPokeInfo(pokemon) {
-	const pokeResponse = await axios.get(`${POKEDEX_API_BASE_URL}/${pokemon}`);
+async function FetchPokeInfo(urls) {
+	try {
+		// returning response
+		const response = urls.map((ele) => axios.get(ele));
 
-	const fullPokeData = pokeResponse.data;
-	const pokeImage =
-		fullPokeData.sprites.other["official-artwork"].front_default;
-	const pokeId = fullPokeData.id;
-	const pokeStats = fullPokeData.stats.map((data) => {
-		return {
-			name: data.stat.name,
-			value: data.base_stat,
-			normalizedValue: Math.floor((data.base_stat / 255) * 100),
-		};
-	});
-	const pokeWeight = fullPokeData.weight;
-	const pokeHeight = fullPokeData.height;
-	const pokeAbilities = fullPokeData.abilities.map(
-		(data) => data.ability.name
-	);
-	const pokeType = fullPokeData.types.map((data) => data.type.name);
-	const pokeWeakness = await FetchPokeDmg(pokeType);
-	const pokeEvoData = await FetchEvolution(
-		`${POKEDEX_API_EVO_URL}/${pokemon}`
-	);
+		// resolving response
+		const resolvePromise = await axios.all(response);
 
-	return {
-		name: pokemon,
-		image: pokeImage,
-		id: pokeId,
-		stats: pokeStats,
-		category: pokeEvoData.category,
-		weight: pokeWeight,
-		height: pokeHeight,
-		abilities: pokeAbilities,
-		types: pokeType,
-		weakness: pokeWeakness,
-		evolution: pokeEvoData.evoNames,
-	};
+		// GET request data
+		const reqPokeInfo = resolvePromise.map((ele) => {
+			const myData = ele.data;
+			return {
+				id: myData.id,
+				name: myData.name,
+				image: myData.sprites.other.dream_world.front_default,
+				types: myData.types.map((ele) => ele.type.name),
+				stats: myData.stats.map((ele) => {
+					return {
+						label: ele.stat.name,
+						value: ele.base_stat,
+					};
+				}),
+				image2: myData.sprites.other["official-artwork"].front_default,
+				weight: myData.weight,
+				height: myData.height,
+				abilities: myData.abilities.map((ele) => ele.ability.name),
+			};
+		});
+
+		return reqPokeInfo;
+	} catch (error) {
+		// catching errors
+		console.log("Error fetching usePokeShortInfo", error);
+		throw error;
+	}
 }
 
 export default FetchPokeInfo;

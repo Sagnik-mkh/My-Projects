@@ -1,8 +1,9 @@
 import axios from "axios";
+import { POKEDEX_API_SPECIES_URL } from "../Helper/Constants";
 
-async function FetchEvolution(url) {
+async function FetchEvolution(id) {
 	// 1. Fetch species data
-	const response = await axios.get(url);
+	const response = await axios.get(`${POKEDEX_API_SPECIES_URL}/${id}`);
 	const speciesData = response.data;
 
 	// 2. Get evolution chain URL
@@ -16,7 +17,7 @@ async function FetchEvolution(url) {
 	const evolutionNames = [];
 
 	function traverse(chain) {
-		evolutionNames.push(chain.species);
+		evolutionNames.push(chain.species.name);
 
 		// If more evolutions exist, recursively walk them
 		chain.evolves_to.forEach((next) => traverse(next));
@@ -24,12 +25,7 @@ async function FetchEvolution(url) {
 
 	traverse(evoData.chain);
 
-	const genera = speciesData.genera;
-	const genusEn = genera.filter((p) => p.language.name == "en");
-	return {
-		evoNames: evolutionNames,
-		category: genusEn[0].genus,
-	};
+	return evolutionNames;
 }
 
 export default FetchEvolution;

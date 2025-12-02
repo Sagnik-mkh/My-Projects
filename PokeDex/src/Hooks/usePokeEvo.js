@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import FetchPokemonList from "../services/FetchPokemonList";
+import FetchEvolution from "../services/FetchEvolution";
 
-function usePokeList(url) {
+function usePokeEvo(id) {
 	const { data, isSuccess, isPending, isLoading, isError, refetch } =
 		useQuery({
-			queryKey: ["pokemon", url],
-			queryFn: () => FetchPokemonList(url),
-			enabled: !!url,
+			queryKey: ["pokemon", id],
+			queryFn: () => FetchEvolution(id),
+			enabled: !!id,
 			staleTime: 10 * 60 * 1000,
 			cacheTime: 15 * 60 * 1000,
 		});
@@ -14,4 +15,4 @@ function usePokeList(url) {
 	return { data, isLoading, isPending, isSuccess, isError, refetch };
 }
 
-export default usePokeList;
+export default usePokeEvo;

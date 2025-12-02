@@ -1,66 +1,83 @@
-import Pokemon from "../Pokemon/Pokemon";
 import { POKEDEX_API_BASE_URL } from "../../Helper/Constants";
+import usePokeShortInfo from "../../hooks/usePokeShortInfo";
+import usePokeList from "../../hooks/usePokeList";
+import Pagination from "./Pagination";
+import PokeCards from "./PokeCards";
 import { useState } from "react";
-import usePokeShortInfo from "../../Hooks/usePokeShortInfo";
-import Button from "../Button/Button";
+import PokeCardSkeleton from "../Loader/CustomListLoader";
 
 function PokemonList() {
+	/**
+	 * ----------------------
+	 * State for maintaining the current page data API url
+	 * Changes basis pagination
+	 * ----------------------
+	 */
 	const [pokeApiUrl, setApiUrl] = useState(POKEDEX_API_BASE_URL);
-	const { data, loading, error } = usePokeShortInfo(pokeApiUrl);
 
+	// Custom hook for getting list of urls
+	const {
+		data: listData,
+		isLoading: listLoading,
+		isError: listError,
+		isSuccess: listSuccess,
+		isPending: listPending,
+	} = usePokeList(pokeApiUrl);
+
+	// Custom hook used for GET pokemon related info
+	const {
+		data: infoData,
+		isLoading: infoLoading,
+		isError: infoError,
+		isSuccess: infoSuccess,
+		isPending: infoPending,
+	} = usePokeShortInfo(listData?.urls);
+
+	// Navigate to prev page
 	function goToPrevUrl() {
-		setApiUrl(data.prev ? data.prev : pokeApiUrl);
+		setApiUrl(listData.prev ? listData.prev : pokeApiUrl);
 	}
 
+	// Navigate to next page
 	function goToNextUrl() {
-		setApiUrl(data.next ? data.next : pokeApiUrl);
+		setApiUrl(listData.next ? listData.next : pokeApiUrl);
 	}
 
-	if (loading) {
+	// Custom Loader
+	if (listLoading || infoLoading || infoPending || listPending) {
+		const skeletonArray = Array.from({ length: 20 });
 		return (
-			<div className="btn btn-accent">
-				<span className="loading loading-bars loading-xs py-3"></span>
-				<span className="font-bold py-3">Loading...</span>
+			<div className="container">
+				<div className="grid grid-cols-4 justify-items-center gap-12">
+					{skeletonArray.map((_, idx) => (
+						<PokeCardSkeleton key={idx} />
+					))}
+				</div>
 			</div>
 		);
 	}
-	if (error) {
-		return <div className="btn btn-accent">{error}</div>;
+
+	// Error state
+	if (infoError || listError) {
+		return (
+			<div className="btn btn-accent">
+				{infoError ? infoError : listError}
+			</div>
+		);
 	}
 
-	if (data) {
+	if (infoSuccess && listSuccess) {
+		console.log("Info data", infoData);
 		return (
-			<>
-				<div className="container">
-					<div className="flex justify-center items-center gap-6 mb-6">
-						<Button
-							buttonText={"Previous"}
-							buttonColor="btn-info"
-							buttonSize="btn-md w-24"
-							onClickHandler={goToPrevUrl}
-						/>
-						<Button
-							buttonText={"Next"}
-							buttonColor="btn-info"
-							buttonSize="btn-md w-24"
-							onClickHandler={goToNextUrl}
-						/>
-					</div>
-					<div className="grid grid-cols-4 gap-4 mx-auto">
-						{data.list.map((pokemon) => {
-							return (
-								<Pokemon
-									key={pokemon.name}
-									pokemonId={pokemon.id}
-									pokemonImage={pokemon.image}
-									pokemonName={pokemon.name}
-									pokemonType={pokemon.types}
-								/>
-							);
-						})}
-					</div>
+			<div className="container">
+				<Pagination
+					goToNextUrl={goToNextUrl}
+					goToPrevUrl={goToPrevUrl}
+				/>
+				<div className="grid grid-cols-4 justify-items-center gap-12">
+					<PokeCards infoData={infoData} infoLoading={infoLoading} />
 				</div>
-			</>
+			</div>
 		);
 	}
 }

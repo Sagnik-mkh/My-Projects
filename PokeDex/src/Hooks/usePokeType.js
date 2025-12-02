@@ -1,13 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import FetchPokeInfo from "../services/FetchPokeInfo";
+import FetchPokeWeakness from "../services/FetchPokeWeakness";
 
-// args -> url -> array
-function usePokeShortInfo(urls) {
+function usePokeType(types) {
 	const { data, isSuccess, isLoading, isPending, isError, refetch } =
 		useQuery({
-			queryKey: urls,
-			queryFn: () => FetchPokeInfo(urls),
-			enabled: !!urls,
+			queryKey: types,
+			queryFn: () => FetchPokeWeakness(types),
+			enabled: !!types,
 			staleTime: 10 * 60 * 1000,
 			cacheTime: 15 * 60 * 1000,
 		});
@@ -15,4 +14,4 @@ function usePokeShortInfo(urls) {
 	return { data, isSuccess, isLoading, isPending, isError, refetch };
 }
 
-export default usePokeShortInfo;
+export default usePokeType;

@@ -1,16 +1,28 @@
 import { Routes, Route } from "react-router";
-import PokeDex from "../Components/PokeDex/PokeDex";
-import PokeDetails from "../Components/PokeDetails/PokeDetails";
-import Footer from "../Components/Footer/Footer";
+import MainLayout from "../pages/layouts/MainLayout";
+import { lazy, Suspense } from "react";
+
+const Home = lazy(() => import("../pages/Home"));
+const PokeDetailsContainer = lazy(() =>
+	import("../components/PokeDetails/PokeDetailsContainer")
+);
 
 function Routing() {
 	return (
-		<div className="flex flex-col gap-2">
+		<div className="flex flex-col gap-20 bg-[url('../../public/pokemonBackground.jpg')] bg-cover bg-fixed bg-center h-full">
 			<Routes>
-				<Route path="/" element={<PokeDex />} />
-				<Route path="/details/:pokemon" element={<PokeDetails />} />
+				<Route path="/" element={<MainLayout />}>
+					<Route index element={<Home />} />
+					<Route
+						path="/details/:pokemon"
+						element={
+							<Suspense fallback={<div>Loading...</div>}>
+								<PokeDetailsContainer />
+							</Suspense>
+						}
+					/>
+				</Route>
 			</Routes>
-			<Footer />
 		</div>
 	);
 }

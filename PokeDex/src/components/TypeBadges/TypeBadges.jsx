@@ -1,3 +1,5 @@
+import Capitalize from "../../Helper/Capitalize";
+
 function TypeBadges({
 	names,
 	textSize = "text-sm",
@@ -5,15 +7,16 @@ function TypeBadges({
 	curve,
 	padding,
 }) {
+	names.sort((a, b) => a.localeCompare(b));
 	return (
 		<div className="flex flex-wrap">
 			{names.map((types) => {
 				return (
 					<div
 						key={types}
-						className={`${padding} ${textSize} ${badgeSize} ${curve} badge bg-pokemon-${types}`}
+						className={`border-none ${padding} ${textSize} ${badgeSize} ${curve} badge bg-pokemon-${types}`}
 					>
-						{types}
+						{Capitalize(types)}
 					</div>
 				);
 			})}

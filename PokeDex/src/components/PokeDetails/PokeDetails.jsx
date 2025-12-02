@@ -1,68 +1,38 @@
-import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router";
-import FetchPokeInfo from "../../Services/FetchPokeInfo";
-import Capitalize from "../../Helper/Capitalize";
-import React from "react";
-import AboutPokemon from "./AboutPokemon";
-import TypeBadges from "../../Components/TypeBadges/TypeBadges";
-import PokeEvolution from "./PokeEvolution";
+import AboutPokemon from "../About/AboutPokemon";
+import StatsTable from "../Stats/Stats";
+import Header from "./Header";
+import BadgesList from "../TypeBadges/BadgesList";
 
-function PokeDetails() {
-	const { pokemon } = useParams();
-	const { data, isSuccess, isLoading, isPending } = useQuery({
-		queryKey: [pokemon],
-		queryFn: () => FetchPokeInfo(pokemon),
-	});
-
-	if (isLoading || isPending) {
-		return <div>Loading...</div>;
-	}
-
-	if (isSuccess) {
-		return (
-			<React.Fragment>
-				<h1 className="my-12 text-4xl text-center">
-					{Capitalize(data.name)} #{data.id}
-				</h1>
-				<div className="container flex gap-12 justify-center mx-auto">
-					<div className="bg-gray-200">
-						<img src={data.image} alt={data.name} />
-					</div>
-					<div className="flex flex-col gap-6">
-						<AboutPokemon
-							height={data.height}
-							weight={data.weight}
-							category={data.category}
-							abilities={data.abilities}
-						/>
-						<div>
-							<p className="my-3 text-lg">Types</p>
-							<TypeBadges
-								names={data.types}
-								textSize="text-sm"
-								badgeSize="badge-xl"
-								curve="rounded-lg"
-								padding="px-6 py-5"
-							/>
-						</div>
-						<div>
-							<p className="my-3 text-lg">Weakness</p>
-							<TypeBadges
-								names={data.weakness}
-								textSize="text-sm"
-								badgeSize="badge-xl"
-								curve="rounded-lg"
-								padding="px-6 py-5"
-							/>
-						</div>
-					</div>
+function PokeDetails({ pokeData, speciesData, weaknessData }) {
+	return (
+		<>
+			<Header name={pokeData.name} id={pokeData.id} />
+			<div className="flex justify-center items-start mx-auto max-w-2/3 gap-12">
+				<div className="basis-1/2 flex flex-col gap-6">
+					<img
+						className="w-full bg-base-200 rounded-lg"
+						src={pokeData.image2}
+						alt={pokeData.name}
+					/>
+					<StatsTable stats={pokeData.stats} />
 				</div>
-				<div className="container mx-auto">
-					<PokeEvolution evolution={data.evolution} />
+				<div className="flex flex-col gap-8 basis-1/2">
+					<div>
+						<h2 className="mb-3 text-lg">Description</h2>
+						<p className="italic">{speciesData.description}</p>
+					</div>
+					<AboutPokemon
+						height={pokeData.height}
+						weight={pokeData.weight}
+						category={speciesData.category}
+						abilities={pokeData.abilities}
+					/>
+					<BadgesList names={pokeData.types} text={"Types"} />
+					<BadgesList names={weaknessData} text={"Weakness"} />
 				</div>
-			</React.Fragment>
-		);
-	}
+			</div>
+		</>
+	);
 }
 
 export default PokeDetails;

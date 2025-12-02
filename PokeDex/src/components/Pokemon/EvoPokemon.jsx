@@ -1,8 +1,8 @@
 import React from "react";
-import Card from "../Card/Card";
 import { useNavigate } from "react-router";
+import AltCard from "../Card/AltCard";
 
-function Pokemon({ pokemonId, pokemonName, pokemonType, pokemonImage }) {
+function EvoPokemon({ pokemonId, pokemonName, pokemonType, pokemonImage }) {
 	/**
 	 * ----------------------
 	 * Navigate to the pokemon details page using react-router
@@ -25,7 +25,7 @@ function Pokemon({ pokemonId, pokemonName, pokemonType, pokemonImage }) {
 	 * ----------------------
 	 */
 	return (
-		<Card
+		<AltCard
 			imageUrl={pokemonImage}
 			imageAlt={pokemonName}
 			title={pokemonName}
@@ -36,4 +36,4 @@ function Pokemon({ pokemonId, pokemonName, pokemonType, pokemonImage }) {
 	);
 }
 
-export default React.memo(Pokemon);
+export default React.memo(EvoPokemon);
