@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router";
 import MainLayout from "../pages/layouts/MainLayout";
 import { lazy, Suspense } from "react";
+import PokeBG from "../assets/images/pokemonBackground.jpg";
 
 /**
  * ----------------------
@@ -28,7 +29,10 @@ function Routing() {
 	 * @returns {JSX.Element} The routing component
 	 */
 	return (
-		<div className="flex flex-col gap-20 bg-[url('../../public/pokemonBackground.jpg')] bg-cover bg-fixed bg-center h-full">
+		<div
+			className={`flex flex-col gap-20 bg-cover bg-fixed bg-center h-full`}
+			style={{ backgroundImage: `url(${PokeBG})` }}
+		>
 			<Routes>
 				<Route path="/" element={<MainLayout />}>
 					<Route index element={<Home />} />

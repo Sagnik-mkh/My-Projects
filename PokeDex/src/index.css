@@ -86,6 +86,7 @@ html {
 }
 .bg-pokemon-dragon {
 	background-color: var(--pokemon-dragon);
+	color: white;
 }
 .bg-pokemon-dark {
 	background-color: var(--pokemon-dark);

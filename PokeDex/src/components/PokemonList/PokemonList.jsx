@@ -68,7 +68,6 @@ export default React.memo(function PokemonList() {
 	}
 
 	if (infoSuccess && listSuccess) {
-		console.log("Info data", infoData);
 		return (
 			<div className="container">
 				<Pagination

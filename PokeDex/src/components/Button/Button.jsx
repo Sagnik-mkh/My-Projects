@@ -20,6 +20,7 @@ function Button({
 	 */
 	return (
 		<button
+			type="button"
 			className={`btn ${buttonColor} ${buttonSize} ${isDisable}`}
 			onClick={onClickHandler}
 		>
